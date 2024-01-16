@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+
+}
+.title{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px auto;
+}
+
+
+.title h1{
+    font-size: 50px;
+    margin-bottom: 25px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.title h1::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(163, 142, 142);
+}
+
+.title p{
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.contain{
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.about{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img{
+    flex: 1;
+    margin-right: 40px;
+    overflow: hidden;
+
+}
+
+.contact{
+
+}
+
+.img img{
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: 0.5s ease;
+}
+
+.about-content{
+    flex: 1;
+}
+
+.about-content h2{
+    font-size: 23px;
+    margin-bottom: 15px;
+    color: #333;
+    margin-top: 10px;
+}
+.about-content p{
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.about-content h2::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(163, 142, 142);
+}
+
+.contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px auto;
+}
+.contact h1{
+    margin-bottom: 20px;
+}
+.contact h1::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(163, 142, 142);
+}
+
+.contact h1 {
+    font-size: 24px;
+}
+
+.contact p {
+    font-size: 18px;
+}
+
+/* Social icons styles */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 15px;
+    text-decoration: none;
+    color: blue; /* Adjust the color as needed */
+}
+.social-icons img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.social-icons a:hover {
+    color: #0077b5; /* Change the color for LinkedIn on hover */
+}
+footer{
+   
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        background-color: #f1f1f1; /* Adjust the color as needed */
+        padding: 10px;
+        text-align: center;
+    
+}

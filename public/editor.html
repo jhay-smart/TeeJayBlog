@@ -37,7 +37,7 @@
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
-
+		<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
 		<script src="js/firebase.js"></script>
 		<script>
 			const blogTitleField = document.querySelector('.title');
@@ -142,6 +142,7 @@
 							publishedAt: `${date.getDate()} ${
 								months[date.getMonth()]
 							} ${date.getFullYear()}`,
+							author: auth.currentUser.email.split('@')[0],
 						})
 						.then(() => {
 							location.href = `/${docName}`;
@@ -151,6 +152,14 @@
 						});
 				}
 			});
+
+			//checking if user is logged in
+			auth.onAuthStateChanged((user) => {
+				if (!user) {
+					location.replace('/admin');
+				}
+			});
 		</script>
+		<script src="js/nav.js"></script>
 	</body>
 </html>

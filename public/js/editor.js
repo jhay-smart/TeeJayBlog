@@ -81,7 +81,8 @@ document.querySelector('.publish-btn').addEventListener('click', () => {
             title: blogTitleField.value,
             article: articleFeild.value,
             bannerImage: bannerPath,
-            publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+            publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`,
+            
         })
         .then(() => {
             location.href = `/${docName}`;
@@ -92,3 +93,9 @@ document.querySelector('.publish-btn').addEventListener('click', () => {
     }
 })
 
+//checking if user is logged in
+auth.onAuthStateChanged((user) => {
+    if(!user){
+        location.replace('/admin');
+    }
+})
