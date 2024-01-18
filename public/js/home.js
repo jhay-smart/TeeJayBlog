@@ -12,7 +12,9 @@ const createBlog = (blog) => {
     let data = blog.data();
 
     // Ensure that the URL uses HTTPS
-    let secureBannerImageURL = data.bannerImage.replace(/^http:\/\//i, 'https://');
+    let secureBannerImageURL = data.bannerImage.startsWith('http://localhost:3000/')
+        ? data.bannerImage.replace(/^http:\/\//i, 'https://')
+        : data.bannerImage;
 
     blogSection.innerHTML += `
     <div class="blog-card">
@@ -23,3 +25,4 @@ const createBlog = (blog) => {
     </div>
     `;
 }
+
