@@ -11,9 +11,9 @@ db.collection("blogs").get().then((blogs) => {
 const createBlog = (blog) => {
     let data = blog.data();
 
-    // Ensure that the URL uses HTTPS
-    let secureBannerImageURL = data.bannerImage.startsWith('http://localhost:3000/')
-        ? data.bannerImage.replace(/^http:\/\//i, 'https://')
+    // Check if the bannerImage starts with a relative path
+    let secureBannerImageURL = data.bannerImage.startsWith('/uploads/')
+        ? `${location.origin}${data.bannerImage}`
         : data.bannerImage;
 
     blogSection.innerHTML += `
