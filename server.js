@@ -1,3 +1,59 @@
+// const express = require('express');
+// const path = require('path');
+// const fileupload = require('express-fileupload');
+
+// let initial_path = path.join(__dirname, "public");
+
+// const app = express();
+// app.use(express.static(initial_path));
+// app.use(fileupload());
+
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(initial_path, "index.html"));
+// })
+
+
+// app.get('/editor', (req, res) => {
+//     res.sendFile(path.join(initial_path, "editor.html"));
+// })
+// app.get('/about', (req, res) => {
+//     res.sendFile(path.join(initial_path, "about.html"));
+// })
+
+// // upload link
+// app.post('/upload', (req, res) => {
+//     let file = req.files.image;
+//     let date = new Date();
+//     // image name
+//     let imagename = date.getDate() + date.getTime() + file.name;
+//     // image upload path
+//     let path = 'public/uploads/' + imagename;
+
+//     // create upload
+//     file.mv(path, (err, result) => {
+//         if(err){
+//             throw err;
+//         } else{
+//             // our image upload path
+//             res.json(`uploads/${imagename}`)
+//         }
+//     })
+// })
+
+// app.get("/:blog", (req, res) => {
+//     res.sendFile(path.join(initial_path, "blog.html"));
+// })
+
+
+
+// app.use((req, res) => {
+//     res.json("404");
+// })
+
+// app.listen("3000", () => {
+//     console.log('listening......');
+// })
+
 const express = require('express');
 const path = require('path');
 const fileupload = require('express-fileupload');
@@ -10,15 +66,15 @@ app.use(fileupload());
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(initial_path, "index.html"));
-})
-
+});
 
 app.get('/editor', (req, res) => {
     res.sendFile(path.join(initial_path, "editor.html"));
-})
+});
+
 app.get('/about', (req, res) => {
     res.sendFile(path.join(initial_path, "about.html"));
-})
+});
 
 // upload link
 app.post('/upload', (req, res) => {
@@ -27,29 +83,27 @@ app.post('/upload', (req, res) => {
     // image name
     let imagename = date.getDate() + date.getTime() + file.name;
     // image upload path
-    let path = 'public/uploads/' + imagename;
+    let imagePath = '/uploads/' + imagename;
 
     // create upload
-    file.mv(path, (err, result) => {
-        if(err){
-            throw err;
-        } else{
-            // our image upload path
-            res.json(`uploads/${imagename}`)
+    file.mv(path.join(initial_path, 'uploads', imagename), (err) => {
+        if (err) {
+            res.status(500).json({ error: 'Error uploading the file' });
+        } else {
+            // send a JSON response with the image path
+            res.json({ imagePath });
         }
-    })
-})
+    });
+});
 
 app.get("/:blog", (req, res) => {
     res.sendFile(path.join(initial_path, "blog.html"));
-})
-
-
+});
 
 app.use((req, res) => {
     res.json("404");
-})
+});
 
 app.listen("3000", () => {
     console.log('listening......');
-})
+});
